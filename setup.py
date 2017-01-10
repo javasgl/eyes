@@ -3,7 +3,7 @@
 from setuptools import setup
 
 setup(
-    name='appRankMonitor',
+    name='eyes',
     version='1.0',
     py_modules=['monitor'],
     install_requires=[
@@ -11,6 +11,6 @@ setup(
     ],
     entry_points='''
        [console_scripts]
-       appRankMonitor=monitor:start
+       eyes=monitor:start
     ''',
 )

@@ -1,7 +1,0 @@
-monitor.py
-appRankMonitor.egg-info/PKG-INFO
-appRankMonitor.egg-info/SOURCES.txt
-appRankMonitor.egg-info/dependency_links.txt
-appRankMonitor.egg-info/entry_points.txt
-appRankMonitor.egg-info/requires.txt
-appRankMonitor.egg-info/top_level.txt
