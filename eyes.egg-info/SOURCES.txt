@@ -1,0 +1,7 @@
+monitor.py
+eyes.egg-info/PKG-INFO
+eyes.egg-info/SOURCES.txt
+eyes.egg-info/dependency_links.txt
+eyes.egg-info/entry_points.txt
+eyes.egg-info/requires.txt
+eyes.egg-info/top_level.txt

@@ -1,6 +1,8 @@
-import sys, os
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import click
-import ConfigParser
+import time
 from models.spider import *
 from models.config import *
 
@@ -8,27 +10,30 @@ from models.config import *
 @click.group()
 def start():
     """This is AppRankMonitor Tool"""
+
+    pass
+
+
+@start.command()
+@click.option('--keyword', default='appname', help='search keyword to be watched!')
+def run(keyword):
+    """start to run"""
+    print keyword
     pass
 
 
 @start.command()
 def getconfig():
     """view config files"""
-    config = ConfigParser.ConfigParser()
-    filepath = './config/config.ini'
-    config.read(filepath)
-    s = config.sections()
-    print 'get config', s
-    o = config.options('mails')
-    print 'get options', o
-    i = config.items('mails')
-    print 'get itmes', i
-    print 'env:', config.get('env', 'debug')
+    for mail in Config.parse_config('admin', 'mailList').split(','):
+        print mail
     spider = Spider.get_intance()
     print spider.set_url('https://baidu.com').parse()
 
 
 @start.command()
-def getlog():
+@click.option('--date', help='eg:2016-12-29')
+def getlog(date):
     """view log files"""
+    print date
     print 'log'
