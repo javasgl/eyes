@@ -18,6 +18,7 @@ def start():
 def run(keyword):
     """start to run"""
     print keyword
+    Spider.get_intance().set_url('').set_keyword(keyword).set_regexp(r'.*<h4 class="media-heading"><a.*>(\d+)、appname.*<\/a><\/h4>.*').parse()
     pass
 
 
