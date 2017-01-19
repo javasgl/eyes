@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 class Spider(object):
     """docstring for Spider"""
 
