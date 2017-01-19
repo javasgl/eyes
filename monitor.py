@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import click
-import time
 from models.spider import *
 from models.config import *
 
@@ -19,6 +18,7 @@ def start():
 def run(keyword):
     """start to run"""
     print keyword
+
     pass
 
 
