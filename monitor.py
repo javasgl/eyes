@@ -4,6 +4,10 @@
 import click
 from models.spider import *
 from models.config import *
+from models.SpiderHandler import SpiderHandler
+from models.ChandashiHandler import ChandashiHandler
+from models.ASO100Handler import ASO100Handler
+from models.CQAsoHandler import CQAsoHandler
 
 
 @click.group()
@@ -18,7 +22,10 @@ def start():
 def run(keyword):
     """start to run"""
     print keyword
-    Spider.get_intance().set_url('').set_keyword(keyword).set_regexp(r'.*<h4 class="media-heading"><a.*>(\d+)、appname.*<\/a><\/h4>.*').parse()
+
+    ChandashiHandler(ASO100Handler(CQAsoHandler())).handle(keyword)
+
+    # Spider.get_intance().set_url('').set_keyword(keyword).set_regexp(r'.*<h4 class="media-heading"><a.*>(\d+)、appname.*<\/a><\/h4>.*').parse()
     pass
 
 
