@@ -9,4 +9,4 @@ class ASO100Handler(SpiderHandler.SpiderHandler):
         SpiderHandler.SpiderHandler.__init__(self, handler)
 
     def process(self, params):
-        return  None
+        return None

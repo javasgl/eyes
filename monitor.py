@@ -4,11 +4,11 @@
 import click
 from models.spider import *
 from models.config import *
-from models.SpiderHandler import SpiderHandler
-from models.ChandashiHandler import ChandashiHandler
-from models.ASO100Handler import ASO100Handler
-from models.CQAsoHandler import CQAsoHandler
 
+from models.Spider.SpiderHandler import SpiderHandler
+from models.Spider.ChandashiHandler import ChandashiHandler
+from models.Spider.ASO100Handler import ASO100Handler
+from models.Spider.CQAsoHandler import CQAsoHandler
 
 @click.group()
 def start():
