@@ -2,10 +2,8 @@
 # -*- coding: utf-8 -*-
 
 import click
-from models.spider import *
 from models.config import *
 
-from models.Spider.SpiderHandler import SpiderHandler
 from models.Spider.ChandashiHandler import ChandashiHandler
 from models.Spider.ASO100Handler import ASO100Handler
 from models.Spider.CQAsoHandler import CQAsoHandler
@@ -25,7 +23,6 @@ def run(keyword):
 
     ChandashiHandler(ASO100Handler(CQAsoHandler())).handle(keyword)
 
-    # Spider.get_intance().set_url('').set_keyword(keyword).set_regexp(r'.*<h4 class="media-heading"><a.*>(\d+)、appname.*<\/a><\/h4>.*').parse()
     pass
 
 
@@ -34,8 +31,6 @@ def getconfig():
     """view config files"""
     for mail in Config.parse_config('admin', 'mailList').split(','):
         print mail
-    spider = Spider.get_intance()
-    print spider.set_url('https://baidu.com').parse()
 
 
 @start.command()
