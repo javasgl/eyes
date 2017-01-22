@@ -6,9 +6,9 @@ import time
 
 
 class Logger(object):
-    def __init__(self, clevel=logging.DEBUG, flevel=logging.DEBUG):
-        path = 'logs/%s.log' % time.strftime('%Y-%m-%d')
-
+    def __init__(self, clevel=logging.DEBUG, flevel=logging.INFO):
+        # path = 'logs/%s.log' % time.strftime('%Y-%m-%d')
+        path = 'logs/log.log'
         self.logger = logging.getLogger(path)
         self.logger.setLevel(clevel)
 

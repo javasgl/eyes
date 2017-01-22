@@ -2,18 +2,20 @@
 # -*- coding: utf-8 -*-
 
 import click
-from models.config import *
 
+import sys
+from models.Config.Config import Config
+from models.Logger.Logger import Logger
 from models.Spider.ChandashiHandler import ChandashiHandler
 from models.Spider.ASO100Handler import ASO100Handler
 from models.Spider.CQAsoHandler import CQAsoHandler
-from models.Logger.Logger import Logger
 
 
 @click.group()
 def start():
     """This is AppRankMonitor Tool"""
-
+    reload(sys)
+    sys.setdefaultencoding('utf-8')
     pass
 
 
@@ -22,7 +24,6 @@ def start():
 def run(keyword):
     """start to run"""
     Logger().debuger('keyword:%s' % keyword)
-
     ChandashiHandler(ASO100Handler(CQAsoHandler())).handle(keyword)
 
     pass

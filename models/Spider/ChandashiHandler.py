@@ -1,13 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import SpiderHandler
+from models.Spider.SpiderHandler import SpiderHandler
 
 
-class ChandashiHandler(SpiderHandler.SpiderHandler):
+class ChandashiHandler(SpiderHandler):
     def __init__(self, handler=None):
-        SpiderHandler.SpiderHandler.__init__(self, handler)
+        super(ChandashiHandler, self).__init__(handler)
 
     def process(self, params):
-        
         return None

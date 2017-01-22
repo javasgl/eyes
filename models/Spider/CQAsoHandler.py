@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import SpiderHandler
+from models.Spider.SpiderHandler import SpiderHandler
 
 
-class CQAsoHandler(SpiderHandler.SpiderHandler):
+class CQAsoHandler(SpiderHandler):
     def __init__(self, handler=None):
-        SpiderHandler.SpiderHandler.__init__(self, handler)
+        super(CQAsoHandler, self).__init__(handler)
 
     def process(self, params):
         print 'cqaso%s' % params
