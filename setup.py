@@ -8,6 +8,7 @@ setup(
     py_modules=['monitor'],
     install_requires=[
         'Click',
+        'pyquery'
     ],
     entry_points='''
        [console_scripts]
