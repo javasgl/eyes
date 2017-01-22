@@ -12,7 +12,6 @@ from models.Spider.ASO100Handler import ASO100Handler
 from models.Spider.CQAsoHandler import CQAsoHandler
 
 
-
 @click.group()
 def start():
     """This is AppRankMonitor Tool"""
