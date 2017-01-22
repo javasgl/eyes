@@ -25,6 +25,7 @@ def start():
 def run(keyword):
     """start to run"""
     Logger().debuger('keyword:%s' % keyword)
+
     ChandashiHandler(ASO100Handler(CQAsoHandler())).handle(keyword)
 
     pass

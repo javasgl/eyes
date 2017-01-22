@@ -17,6 +17,7 @@ class ASO100Handler(SpiderHandler):
 
     def process(self, params):
 
+        return None
         print 'processing...%s' % type(self)
 
         url = self.URL % params
@@ -34,7 +35,7 @@ class ASO100Handler(SpiderHandler):
                 if re.match(ur'.*' + params + '.*', response.geturl()):
                     """前后url比较"""
                     appname = Config.parse_config('app', 'appname')
-                    doc = PyQuery(response.geturl())
+                    doc = PyQuery(response.read())
                     apps = doc('.media-heading')
                     for app in apps.items():
                         group = re.search(ur'(\d+)、' + appname + '', app.text())
