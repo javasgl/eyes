@@ -4,7 +4,6 @@
 import urllib2
 import re
 from models.Config.Config import Config
-from models.Notify.EMail import EMail
 from models.Spider.SpiderHandler import SpiderHandler
 from pyquery import PyQuery
 

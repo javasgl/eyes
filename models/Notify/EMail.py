@@ -19,7 +19,7 @@ class EMail(object):
             .set_to('who<who@doamin>') \
             .set_subject('title') \
             .set_content('<a href="http://www.qq.com">this is content</a>') \
-            .set_append_content('this is addon content')
+            .set_append_content('this is addon content')\
             .set_mimetype('html') \
             .set_recevers('who1@doamin') \
             .set_recevers('who2@doamin') \

@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import hashlib
 from abc import abstractmethod
 from models.DBM.DBM import DBM
-import hashlib
+from models.Notify.EMail import EMail
 
 
 class SpiderHandler(object):
@@ -26,7 +27,8 @@ class SpiderHandler(object):
             dbm = DBM()
             # diff rank
             md5 = hashlib.md5()
-            md5.update(params)
+            # handlder + keyword
+            md5.update(params + '.' + type(self).__name__)
             key = md5.hexdigest()
             previous_rank = dbm.get(key)
             if previous_rank is None:
@@ -36,9 +38,21 @@ class SpiderHandler(object):
                 processed = int(processed)
 
                 if previous_rank > processed:
-                    print '下降了'
-                elif previous_rank < processed:
                     print '上升了'
+
+                elif previous_rank < processed:
+
+                    EMail().set_from('monitor', 'who@doamin') \
+                        .set_to('who<who@doamin>') \
+                        .set_subject('title') \
+                        .set_content('<a href="http://www.qq.com">this is content</a>') \
+                        .set_append_content('this is addon content') \
+                        .set_mimetype('html') \
+                        .set_recevers('who1@doamin') \
+                        .set_recevers('who2@doamin') \
+                        .set_attachment('logs/log.log') \
+                        .set_attachment('logs/cat12.gif') \
+                        .send()
                 else:
                     print 'not changed'
 

@@ -5,7 +5,6 @@ import urllib2
 import re
 import json
 from models.Config.Config import Config
-from models.Notify.EMail import EMail
 from models.Spider.SpiderHandler import SpiderHandler
 
 
