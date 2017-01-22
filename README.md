@@ -5,9 +5,7 @@
   - eyes --help
 
 ##  what`s next:
-- [ ] detect http code to alert
-- [ ] use `chain of responsibilities` to refactor
-- [ ] add send mail feature
-- [ ] add multi watched url config
+- [x] use `chain of responsibilities` to refactor
+- [x] add send mail feature
 - [ ] add log feature
 - [ ] add log view feature
