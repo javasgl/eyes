@@ -13,9 +13,6 @@ class SpiderHandler(object):
         if processed is None:
             if self._handler is not None:
                 processed = self._handler.handle(params)
-        else:
-            print processed
-            print 'success'
         return processed
 
     @abstractmethod
