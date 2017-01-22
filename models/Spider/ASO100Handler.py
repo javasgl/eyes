@@ -41,8 +41,6 @@ class ASO100Handler(SpiderHandler):
                         if group:
                             rank = group.group(1)
         if rank is not None:
-            print rank
-            # send diff mail
-            return 'done!'
+            return int(rank)
         else:
             return None

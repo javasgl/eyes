@@ -40,8 +40,6 @@ class CQAsoHandler(SpiderHandler):
                             rank = app['nowRank']
 
         if rank is not None:
-            print rank
-            # send diff mail
-            return 'done!'
+            return int(rank)
         else:
             return None

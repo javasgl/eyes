@@ -8,7 +8,7 @@ class DBM(object):
     def __init__(self):
         self._db = dbm.open(Config.parse_config('dbm', 'dbfile'), 'c')
 
-    def add(self, key, value):
+    def set(self, key, value):
         self._db[key] = str(value)
         return self
 
@@ -20,4 +20,3 @@ class DBM(object):
 
     def __del__(self):
         self._db.close()
-        print 'close db'
