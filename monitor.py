@@ -9,7 +9,6 @@ from models.Logger.Logger import Logger
 from models.Spider.ChandashiHandler import ChandashiHandler
 from models.Spider.ASO100Handler import ASO100Handler
 from models.Spider.CQAsoHandler import CQAsoHandler
-from models.Notify.EMail import EMail
 
 
 @click.group()
@@ -25,7 +24,6 @@ def start():
 def run(keyword):
     """start to run"""
     Logger().debuger('keyword:%s' % keyword)
-
 
     ChandashiHandler(ASO100Handler(CQAsoHandler())).handle(keyword)
 
