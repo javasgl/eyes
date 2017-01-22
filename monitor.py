@@ -10,6 +10,7 @@ from models.Logger.Logger import Logger
 from models.Spider.ChandashiHandler import ChandashiHandler
 from models.Spider.ASO100Handler import ASO100Handler
 from models.Spider.CQAsoHandler import CQAsoHandler
+from models.DBM.DBM import DBM
 
 
 @click.group()
