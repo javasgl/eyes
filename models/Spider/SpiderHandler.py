@@ -4,7 +4,6 @@
 import hashlib
 from abc import abstractmethod
 from models.DBM.DBM import DBM
-from models.Notify.EMail import EMail
 
 
 class SpiderHandler(object):
@@ -13,7 +12,7 @@ class SpiderHandler(object):
 
     def handle(self, params):
         processed = self.process(params)
-        if processed is None:
+        if processed['res'] is None:
             if self._handler is not None:
                 processed = self._handler.handle(params)
         self.diff(params, processed)
@@ -23,7 +22,7 @@ class SpiderHandler(object):
         pass
 
     def diff(self, params, processed):
-        if processed is not None:
+        if processed is not None and processed['res'] is not None:
             dbm = DBM()
             # diff rank
             md5 = hashlib.md5()
@@ -32,31 +31,23 @@ class SpiderHandler(object):
             key = md5.hexdigest()
             previous_rank = dbm.get(key)
             if previous_rank is None:
-                dbm.set(key, processed)
+                dbm.set(key, processed['rank'])
             else:
                 previous_rank = int(previous_rank)
-                processed = int(processed)
+                current_rank = int(processed['rank'])
 
-                if previous_rank > processed:
-                    print '上升了'
+                if previous_rank > current_rank:
+                    print 'rank has inecreased!send notify to others'
+                    dbm.set(key, current_rank)
 
-                elif previous_rank < processed:
-
-                    EMail().set_from('monitor', 'who@doamin') \
-                        .set_to('who<who@doamin>') \
-                        .set_subject('title') \
-                        .set_content('<a href="http://www.qq.com">this is content</a>') \
-                        .set_append_content('this is addon content') \
-                        .set_mimetype('html') \
-                        .set_recevers('who1@doamin') \
-                        .set_recevers('who2@doamin') \
-                        .set_attachment('logs/log.log') \
-                        .set_attachment('logs/cat12.gif') \
-                        .send()
+                elif previous_rank < current_rank:
+                    print 'rank has decreased!send notify to others'
+                    dbm.set(key, current_rank)
                 else:
-                    print 'not changed'
+                    print 'rank has not changed,don`t need to disturb others'
 
         else:
             if self._handler is None:
                 # last one handler is none , notify admin users
                 print 'last one handler:%s' % type(self)
+                print 'very bad, need to alert the developers!'

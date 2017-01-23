@@ -3,14 +3,11 @@
 
 import click
 import sys
-import hashlib
 
 from models.Config.Config import Config
-from models.Logger.Logger import Logger
 from models.Spider.ChandashiHandler import ChandashiHandler
 from models.Spider.ASO100Handler import ASO100Handler
 from models.Spider.CQAsoHandler import CQAsoHandler
-from models.DBM.DBM import DBM
 
 
 @click.group()
@@ -25,7 +22,6 @@ def start():
 @click.option('--keyword', default='appname', help='search keyword to be watched!')
 def run(keyword):
     """start to run"""
-    Logger().debuger('keyword:%s' % keyword)
     CQAsoHandler(ChandashiHandler(ASO100Handler())).handle(keyword)
     pass
 
