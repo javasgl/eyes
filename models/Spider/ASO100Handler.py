@@ -40,6 +40,7 @@ class ASO100Handler(SpiderHandler):
                         if group:
                             rank = group.group(1)
         if rank is not None:
-            return int(rank)
+            return {'res': 'done', 'url': url, 'rank': int(rank)}
         else:
-            return None
+            return {'res': None, 'url': url, 'rank': 0}
+

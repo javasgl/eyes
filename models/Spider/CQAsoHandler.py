@@ -39,6 +39,6 @@ class CQAsoHandler(SpiderHandler):
                             rank = app['nowRank']
 
         if rank is not None:
-            return int(rank)
+            return {'res': 'done', 'url': url, 'rank': int(rank)}
         else:
-            return None
+            return {'res': None, 'url': url, 'rank': 0}

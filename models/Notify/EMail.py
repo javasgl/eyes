@@ -35,7 +35,7 @@ class EMail(object):
         self._receviers = []
         self._from = ''
         self._to = ''
-        self._content_type = 'plain'
+        self._content_type = 'html'
         self._content = ''
         self._subject = ''
         self._attachments = []
@@ -53,7 +53,7 @@ class EMail(object):
         self._to = Header(tostr, 'utf-8')
         return self
 
-    def set_mimetype(self, content_type='plain'):
+    def set_mimetype(self, content_type='html'):
         self._content_type = content_type
         return self
 
@@ -75,7 +75,8 @@ class EMail(object):
 
     def set_append_content(self, append=''):
         if append is not None:
-            self._content = '%s(%s)' % (self._content, append)
+            self._content = '<div>%s</div><div>%s</div>' % (self._content, append)
+        return self
 
     def send(self):
         if self._content is None:
