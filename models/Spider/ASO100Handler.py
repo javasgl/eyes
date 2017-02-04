@@ -43,4 +43,3 @@ class ASO100Handler(SpiderHandler):
             return {'res': 'done', 'url': url, 'rank': int(rank)}
         else:
             return {'res': None, 'url': url, 'rank': 0}
-
