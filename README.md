@@ -9,4 +9,4 @@
 - [x] add send mail feature
 - [x] add dbm
 - [x] add log feature
-- [ ] add log view feature
+- [x] add log view feature
