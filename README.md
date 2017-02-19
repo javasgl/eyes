@@ -1,4 +1,7 @@
----
+监控 app strore 关键词搜索结果中特定app的排名
+
+排名变动触发提醒(邮件提醒)
+
 ## manual
 
 - `eyes --help`
