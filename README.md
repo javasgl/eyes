@@ -1,8 +1,13 @@
 ---
+## manual
+
+- `eyes --help`
+- `eyes command --help` 
+
 ## dev
 
-  - pip install -e pathOfProject
-  - eyes --help
+- `pip install -e pathOfProject`
+- `eyes --help`
 
 ##  what`s next:
 - [x] use `chain of responsibilities` to refactor
