@@ -6,31 +6,45 @@ import time
 
 
 class Logger(object):
-    def __init__(self, clevel=logging.DEBUG, flevel=logging.INFO):
-        path = 'logs/%s.log' % time.strftime('%Y-%m-%d')
+    def __init__(self):
+        path = self.get_log_file()
         self.logger = logging.getLogger(path)
-        self.logger.setLevel(clevel)
 
         fmt = logging.Formatter('[%(asctime)s] [%(levelname)s] %(message)s', '%Y-%m-%d %H:%M:%S')
-        streamhandler = logging.StreamHandler()
-        streamhandler.setLevel(clevel)
-        streamhandler.setFormatter(fmt)
+        # stream handler
+        self._streamhandler = logging.StreamHandler()
+        self._streamhandler.setFormatter(fmt)
 
-        filehandler = logging.FileHandler(path)
-        filehandler.setLevel(flevel)
-        filehandler.setFormatter(fmt)
+        # file handler
+        self._filehandler = logging.FileHandler(path)
+        self._filehandler.setFormatter(fmt)
 
-        self.logger.addHandler(streamhandler)
-        self.logger.addHandler(filehandler)
+    @staticmethod
+    def get_log_file():
+        return 'logs/%s.log' % time.strftime('%Y-%m-%d')
 
     def debuger(self, message):
+        self.logger.setLevel(logging.DEBUG)
+        self.logger.addHandler(self._streamhandler)
         self.logger.debug(message)
 
     def info(self, message):
+        self.logger.setLevel(logging.INFO)
+        self.logger.addHandler(self._filehandler)
         self.logger.info(message)
 
     def error(self, message):
+        self.logger.setLevel(logging.ERROR)
+        self.logger.addHandler(self._streamhandler)
+        self.logger.addHandler(self._filehandler)
         self.logger.error(message)
 
     def cri(self, message):
+        self.logger.setLevel(logging.CRITICAL)
+        self.logger.addHandler(self._streamhandler)
+        self.logger.addHandler(self._filehandler)
         self.logger.critical(message)
+
+    def __del__(self):
+        self.logger.removeHandler(self._filehandler)
+        self.logger.removeHandler(self._streamhandler)

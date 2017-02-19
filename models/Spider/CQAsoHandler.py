@@ -15,7 +15,6 @@ class CQAsoHandler(SpiderHandler):
         super(CQAsoHandler, self).__init__(handler)
 
     def process(self, params):
-        print 'processing...%s' % type(self)
 
         url = self.URL % params
 

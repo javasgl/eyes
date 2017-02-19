@@ -4,6 +4,7 @@
 import hashlib
 from abc import abstractmethod
 from models.DBM.DBM import DBM
+from models.Logger.Logger import Logger
 
 
 class SpiderHandler(object):
@@ -11,6 +12,7 @@ class SpiderHandler(object):
         self._handler = handler
 
     def handle(self, params):
+        Logger().info("prcessing....%s" % type(self))
         processed = self.process(params)
         if processed['res'] is None:
             if self._handler is not None:
@@ -37,17 +39,17 @@ class SpiderHandler(object):
                 current_rank = int(processed['rank'])
 
                 if previous_rank > current_rank:
-                    print 'rank has inecreased!send notify to others'
+                    Logger().info('rank has inecreased!send notify to others')
                     dbm.set(key, current_rank)
 
                 elif previous_rank < current_rank:
-                    print 'rank has decreased!send notify to others'
+                    Logger().info('rank has decreased!send notify to others')
                     dbm.set(key, current_rank)
                 else:
-                    print 'rank has not changed,don`t need to disturb others'
+                    Logger().info('rank has not changed,don`t need to disturb others')
 
         else:
             if self._handler is None:
                 # last one handler is none , notify admin users
-                print 'last one handler:%s' % type(self)
-                print 'very bad, need to alert the developers!'
+                Logger().cri('last one handler:%s' % type(self))
+                Logger().cri('very bad, need to alert the developers!')

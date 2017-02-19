@@ -16,8 +16,6 @@ class ASO100Handler(SpiderHandler):
 
     def process(self, params):
 
-        print 'processing...%s' % type(self)
-
         url = self.URL % params
 
         rank = None

@@ -17,8 +17,6 @@ class ChandashiHandler(SpiderHandler):
 
     def process(self, params):
 
-        print 'processing...%s' % type(self)
-
         url = self.URL % params
 
         rank = None
