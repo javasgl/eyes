@@ -3,6 +3,8 @@
 
 import logging
 import time
+import os
+from models.Config.Config import Config
 
 
 class Logger(object):
@@ -20,8 +22,11 @@ class Logger(object):
         self._filehandler.setFormatter(fmt)
 
     @staticmethod
-    def get_log_file():
-        return 'logs/%s.log' % time.strftime('%Y-%m-%d')
+    def get_log_file(filename=time.strftime('%Y-%m-%d')):
+        if os.path.exists(Config.parse_config('log', 'logdir')):
+            return '%s%s.log' % (Config.parse_config('log', 'logdir'), filename)
+        else:
+            raise OSError("config dir is not exists")
 
     def debuger(self, message):
         self.logger.setLevel(logging.DEBUG)

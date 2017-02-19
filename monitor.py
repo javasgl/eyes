@@ -3,7 +3,9 @@
 
 import click
 import sys
+import time
 
+from models.Logger.LogView import LogView
 from models.Config.Config import Config
 from models.Spider.ChandashiHandler import ChandashiHandler
 from models.Spider.ASO100Handler import ASO100Handler
@@ -34,8 +36,8 @@ def getconfig():
 
 
 @start.command()
-@click.option('--date', help='eg:2016-12-29')
-def getlog(date):
+@click.option('--date', default=time.strftime('%Y-%m-%d'), help='eg:--date=2016-12-29')
+@click.option('--line', default=10, help='eg:--line=5')
+def getlog(date, line):
     """view log files"""
-    print date
-    print 'log'
+    LogView().set_count(line).set_date(date).view_log()
